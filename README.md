@@ -40,6 +40,12 @@ sendo retornado corretamente.
 
 **Logging Adicional**: Adicionamos logs detalhados antes e depois de etapas críticas para diagnóstico e depuração mais eficientemente
 3. **Configuração do Swagger**: Certifique-se de que as URLs do Swagger estejam disponíveis sem autenticação para que a documentação esteja acessível.
+![image](https://github.com/user-attachments/assets/81359aea-4eee-4cf9-aff1-374a4be7f086)
+![image](https://github.com/user-attachments/assets/b935e8df-8173-489d-9ea2-83e24f03b536)
+![image](https://github.com/user-attachments/assets/63e1507f-3480-4ec1-84d7-6870b47c006e)
+
+
+
 
 ## Como Contribuir
 
