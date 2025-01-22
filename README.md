@@ -28,8 +28,18 @@ Essa API foi desenvolvida para realizar autenticação de usuários utilizando J
 
 ## Problemas Conhecidos
 
-1. **Erro 403 ao Logar**: Atualmente, ao tentar fazer login, um erro 403 (Forbidden) é retornado. Isso indica que há problemas na autenticação, possivelmente em algum aspecto do filtro JWT ou configuração de segurança.
-2. **Configuração do Swagger**: Certifique-se de que as URLs do Swagger estejam disponíveis sem autenticação para que a documentação esteja acessível.
+1. **Erro 403 ao Logar**: Atualmente, ao tentar fazer login, um erro 403 (Forbidden) é retornado. Isso indica que há problemas na autenticação, possivelmente em algum aspecto do filtro JWT ou configuração de segurança.(resolvido)
+2. **CustomUserDetailsService**: Definimos esta classe para implementar a interface UserDetailsService e carregar os detalhes do usuário. Garantimos que o UserDetails customizado esteja 
+sendo retornado corretamente.
+
+**UserService**: Removemos a implementação do método loadUserByUsername, evitando duplicidade e conflito com CustomUserDetailsService.
+
+**AuthController**: Ajustamos o método de login para incluir blocos try-catch para capturar exceções e detalhar mensagens de erro no processo de autenticação.
+
+**SecurityConfig**: Certificamos de que o AuthenticationManager esteja configurado corretamente para usar o serviço de UserDetails customizado.
+
+**Logging Adicional**: Adicionamos logs detalhados antes e depois de etapas críticas para diagnóstico e depuração mais eficientemente
+3. **Configuração do Swagger**: Certifique-se de que as URLs do Swagger estejam disponíveis sem autenticação para que a documentação esteja acessível.
 
 ## Como Contribuir
 
@@ -37,3 +47,4 @@ Essa API foi desenvolvida para realizar autenticação de usuários utilizando J
    ```bash
    git clone https://github.com/teofilonicolau/jwt_-authentication_api.git
    ```
+   
