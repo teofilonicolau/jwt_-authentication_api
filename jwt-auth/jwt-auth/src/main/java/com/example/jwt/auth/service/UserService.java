@@ -14,11 +14,13 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public User saveUser(User user){
+        // criptografar a senha
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
     public User findByUsername(String username) {
+        // encontrar usuário pelo nome de usuário
         return userRepository.findByUsername(username).orElse(null);
     }
 }

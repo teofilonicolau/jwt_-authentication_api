@@ -1,5 +1,7 @@
+
 package com.example.jwt.auth.config;
 
+import com.example.jwt.auth.service.CustomUserDetailsService;
 import com.example.jwt.auth.service.UserService;
 import com.example.jwt.auth.util.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +40,14 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http, UserService userService) throws Exception {
+    public AuthenticationManager authenticationManager(HttpSecurity http, CustomUserDetailsService userDetailsService) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
 
         authenticationManagerBuilder
-                .userDetailsService(username -> (org.springframework.security.core.userdetails.UserDetails) userService.findByUsername(username))
+                .userDetailsService(userDetailsService)  // Correto UserDetailsService
                 .passwordEncoder(passwordEncoder());
 
         return authenticationManagerBuilder.build();
     }
+
 }
